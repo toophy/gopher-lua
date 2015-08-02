@@ -2,8 +2,8 @@
 GopherLua: VM and compiler for Lua in Go.
 ===============================================================================
 
-.. image:: https://godoc.org/github.com/yuin/gopher-lua?status.svg
-    :target: http://godoc.org/github.com/yuin/gopher-lua
+.. image:: https://godoc.org/github.com/toophy/gopher-lua?status.svg
+    :target: http://godoc.org/github.com/toophy/gopher-lua
 
 .. image:: https://travis-ci.org/yuin/gopher-lua.svg
     :target: https://travis-ci.org/yuin/gopher-lua
@@ -42,7 +42,7 @@ How about performance?
 ----------------------------------------------------------------
 GopherLua is not fast but not too slow, I think.
 
-There are some benchmarks on the `wiki page <https://github.com/yuin/gopher-lua/wiki/Benchmarks>`_ .
+There are some benchmarks on the `wiki page <https://github.com/toophy/gopher-lua/wiki/Benchmarks>`_ .
 
 ----------------------------------------------------------------
 Installation
@@ -50,7 +50,7 @@ Installation
 
 .. code-block:: bash
    
-   go get github.com/yuin/gopher-lua
+   go get github.com/toophy/gopher-lua
 
 ----------------------------------------------------------------
 Usage
@@ -65,7 +65,7 @@ Import a package.
 .. code-block:: go
    
    import (
-       "github.com/yuin/gopher-lua"
+       "github.com/toophy/gopher-lua"
    )
 
 Run scripts in the VM.
@@ -86,7 +86,7 @@ Run scripts in the VM.
        panic(err)
    }
 
-Refer to `Lua Reference Manual <http://www.lua.org/manual/5.1/>`_ and `Go doc <http://godoc.org/github.com/yuin/gopher-lua>`_ for further information.
+Refer to `Lua Reference Manual <http://www.lua.org/manual/5.1/>`_ and `Go doc <http://godoc.org/github.com/toophy/gopher-lua>`_ for further information.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Data model
@@ -195,7 +195,7 @@ An LState object that has been created by ``*LState#NewThread()`` inherits the c
 API
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Refer to `Lua Reference Manual <http://www.lua.org/manual/5.1/>`_ and `Go doc(LState methods) <http://godoc.org/github.com/yuin/gopher-lua>`_ for further information.
+Refer to `Lua Reference Manual <http://www.lua.org/manual/5.1/>`_ and `Go doc(LState methods) <http://godoc.org/github.com/toophy/gopher-lua>`_ for further information.
 
 +++++++++++++++++++++++++++++++++++++++++
 Calling Go from Lua
@@ -260,7 +260,7 @@ mymodule.go
     package mymodule
     
     import (
-        "github.com/yuin/gopher-lua"
+        "github.com/toophy/gopher-lua"
     )
     
     func Loader(L *lua.LState) int {
@@ -290,7 +290,7 @@ mymain.go
     
     import (
         "./mymodule"
-        "github.com/yuin/gopher-lua"
+        "github.com/toophy/gopher-lua"
     )
     
     func main() {
@@ -484,7 +484,7 @@ Go API
 
 ``ToChannel``, ``CheckChannel``, ``OptChannel`` are available.
 
-Refer to `Go doc(LState methods) <http://godoc.org/github.com/yuin/gopher-lua>`_ for further information.
+Refer to `Go doc(LState methods) <http://godoc.org/github.com/toophy/gopher-lua>`_ for further information.
 
 '''''''''''''''
 Lua API
@@ -662,7 +662,7 @@ Lua has an interpreter called ``lua`` . GopherLua has an interpreter called ``gl
 
 .. code-block:: bash
 
-   go get github.com/yuin/gopher-lua/cmd/glua
+   go get github.com/toophy/gopher-lua/cmd/glua
 
 ``glua`` has same options as ``lua`` .
 
@@ -681,7 +681,7 @@ Our workflow is based on the `github-flow <https://guides.github.com/introductio
 3. Clone your fork and add the upstream.
    ::
 
-        git remote add upstream https://github.com/yuin/gopher-lua.git
+        git remote add upstream https://github.com/toophy/gopher-lua.git
 
 4. Pull new changes from the upstream.
    ::
@@ -712,7 +712,7 @@ Libraries for GopherLua
 ----------------------------------------------------------------
 
 - `gopher-luar <https://github.com/layeh/gopher-luar>`_ : Custom type reflection for gopher-lua
-- `gluamapper <https://github.com/yuin/gluamapper>`_ : Mapping a Lua table to a Go struct
+- `gluamapper <https://github.com/toophy/gluamapper>`_ : Mapping a Lua table to a Go struct
 - `gluahttp <https://github.com/cjoudrey/gluahttp>`_ : HTTP request module for gopher-lua
 - `gopher-json <https://github.com/layeh/gopher-json>`_ : a simple JSON encoder/decoder for gopher-lua
 
