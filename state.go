@@ -6,6 +6,7 @@ import (
 	"io"
 	"math"
 	"os"
+	"path/filepath"
 	"runtime"
 	"strings"
 	"sync/atomic"
@@ -1802,6 +1803,27 @@ func (ls *LState) GetUserData(struct_name string, point interface{}) LValue {
 	ls.SetMetatable(ud, ls.GetTypeMetatable(struct_name))
 
 	return ud
+}
+
+// Make LUserData with go custome struct
+// 获取用Lua类型封装结构指针  *LUserData
+func (ls *LState) RequireDir(dir string) error {
+	// 所有 lua 文件
+	all_lua := []string{}
+	filepath.Walk(dir, func(path string, info os.FileInfo, err error) error {
+
+		if !info.IsDir() && strings.HasSuffix(path, ".lua") {
+			format_path := strings.Replace(path, "\\", "/", -1)
+			all_lua = append(all_lua, strings.TrimSuffix(format_path, ".lua"))
+		}
+		return nil
+	})
+
+	for k, _ := range all_lua {
+		ls.Require(all_lua[k])
+	}
+
+	return nil
 }
 
 /* }}} */
