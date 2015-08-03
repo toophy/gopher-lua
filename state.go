@@ -1761,6 +1761,49 @@ loopbreak:
 	return LNumber(1)
 }
 
+// Get custom module
+func (ls *LState) GetModule(module_name string) LValue {
+	//m := ls.GetField(ls.GetField(ls.GetGlobal("package"), "loaded"), module_name)
+	m := ls.GetField(ls.GetField(ls.Get(RegistryIndex), "_LOADED"), module_name)
+
+	if _, ok := m.(*LTable); !ok {
+		ls.RaiseError("package.loaded.%s must be a table", module_name)
+		return nil
+	}
+
+	return m
+}
+
+// Get custome module function
+func (ls *LState) GetFunction(module_name string, func_name string) LValue {
+	//m := ls.GetField(ls.GetField(ls.GetGlobal("package"), "loaded"), module_name)
+	m := ls.GetField(ls.GetField(ls.Get(RegistryIndex), "_LOADED"), module_name)
+
+	if _, ok := m.(*LTable); !ok {
+		ls.RaiseError("package.loaded.%s must be a table", module_name)
+		return nil
+	}
+
+	f := ls.GetField(m, func_name)
+	if _, ok := f.(*LFunction); !ok {
+		ls.RaiseError("package.loaded.%s.%s must be a table", module_name, func_name)
+		return nil
+	}
+
+	return f
+}
+
+// Make LUserData with go custome struct
+// 获取用Lua类型封装结构指针  *LUserData
+func (ls *LState) GetUserData(struct_name string, point interface{}) LValue {
+
+	ud := ls.NewUserData()
+	ud.Value = point
+	ls.SetMetatable(ud, ls.GetTypeMetatable(struct_name))
+
+	return ud
+}
+
 /* }}} */
 
 /* }}} */
